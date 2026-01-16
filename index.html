@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>El Balcón Futbolero | Gastrobar · Cocina de autor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#daad25",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#010001",
+                        "surface-dark": "#171612",
+                        "soft-white": "#F2F2F2"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["'Playfair Display'", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            min-height: 100dvh;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Animaciones del Landing */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes expandWidth {
+            from {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(45deg); }
+        }
+
+        @keyframes bounceSmooth {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, -20px); }
+        }
+
+        @keyframes floatReverse {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, 20px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fade-in-down {
+            animation: fadeInDown 0.8s cubic-bezier(0.35, 0, 0.25, 1) 0.2s both;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.35, 0, 0.25, 1) 0.4s both;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both;
+        }
+
+        .animate-expand-width {
+            animation: expandWidth 0.8s cubic-bezier(0.35, 0, 0.25, 1) 0.5s both;
+        }
+
+        .animate-rotate {
+            animation: rotate 1s cubic-bezier(0.35, 0, 0.25, 1) 0.8s both;
+        }
+
+        .animate-bounce-smooth {
+            animation: fadeIn 0.8s ease-out 1s both, bounceSmooth 2s ease-in-out 1.8s infinite;
+        }
+
+        .animate-float {
+            animation: fadeIn 1.5s ease-out 0.3s both, float 8s ease-in-out 2s infinite;
+        }
+
+        .animate-float-reverse {
+            animation: fadeIn 1.5s ease-out 0.4s both, floatReverse 10s ease-in-out 2s infinite;
+        }
+
+        /* Transiciones */
+        .icon-circle {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .icon-circle:hover .glow {
+            transform: scale(1.3);
+            opacity: 0.2;
+        }
+
+        .icon-circle:hover .outer-ring {
+            border-color: rgba(218, 173, 37, 0.4);
+            transform: scale(1.05);
+        }
+
+        .icon-circle:hover .inner-ring {
+            border-color: rgba(218, 173, 37, 0.6);
+            transform: scale(1.1);
+        }
+
+        .icon-circle:hover .icon {
+            transform: scale(1.15);
+            text-shadow: 0 0 20px rgba(218, 173, 37, 0.6);
+        }
+
+        .glow, .outer-ring, .inner-ring, .icon {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .cta-button {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 40px rgba(218, 173, 37, 0.6);
+        }
+
+        .cta-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Menu Sidebar */
+        .menu-sidebar {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .menu-sidebar.active {
+            transform: translateX(0);
+        }
+
+        .menu-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Estilos del menú de comida */
+        .menu-item {
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background-color: rgba(218, 173, 37, 0.05);
+        }
+
+        .section-header {
+            scroll-margin-top: 120px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-soft-white antialiased">
+    
+    <!-- Landing Page -->
+    <div id="landing" class="relative flex min-h-screen w-full flex-col items-center justify-between overflow-hidden px-6 py-12">
+        <!-- Top Ornament -->
+        <div class="flex flex-col items-center gap-2 pt-8 opacity-60 animate-fade-in-down">
+            <span class="material-symbols-outlined text-primary text-2xl">sports_soccer</span>
+            <div class="h-[1px] w-8 bg-primary/40"></div>
+        </div>
+
+        <!-- Main Identity Area -->
+        <div class="flex flex-col items-center text-center space-y-6">
+            <div class="flex flex-col items-center">
+                <h1 class="font-serif text-[42px] leading-tight text-soft-white tracking-tight px-4 animate-fade-in-up">
+                    El Balcón Futbolero
+                </h1>
+
+                <div class="my-6 flex items-center justify-center gap-4 w-full max-w-[200px] animate-expand-width">
+                    <div class="h-[0.5px] flex-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-primary animate-rotate"></div>
+                    <div class="h-[0.5px] flex-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+                </div>
+
+                <h2 class="text-primary text-sm font-bold uppercase tracking-[0.2em] px-4" style="animation: fadeIn 1s ease-out 0.6s both;">
+                    Gastrobar · Cocina de autor
+                </h2>
+            </div>
+
+            <div class="relative mt-8 icon-circle animate-scale-in">
+                <div class="glow absolute inset-0 bg-primary/10 blur-3xl rounded-full"></div>
+                <div class="outer-ring relative w-24 h-24 flex items-center justify-center border border-primary/20 rounded-full">
+                    <div class="inner-ring w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center">
+                        <span class="icon material-symbols-outlined text-primary text-4xl">restaurant</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-8 w-full">
+            <div class="flex w-full justify-center px-4" style="animation: fadeInUp 0.8s cubic-bezier(0.35, 0, 0.25, 1) 0.9s both;">
+                <button id="verMenuBtn" class="cta-button flex min-w-[200px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 bg-primary text-background-dark text-sm font-bold leading-normal tracking-[0.1em] uppercase shadow-[0_0_20px_rgba(218,173,37,0.3)]">
+                    <span class="truncate">Ver Menú</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full pointer-events-none animate-float"></div>
+        <div class="absolute bottom-[-5%] right-[-5%] w-[30%] h-[30%] bg-primary/5 blur-[100px] rounded-full pointer-events-none animate-float-reverse"></div>
+    </div>
+
+    <!-- Menu Page -->
+    <div id="menuPage" class="hidden min-h-screen">
+        <!-- Top Navigation -->
+        <nav class="sticky top-0 z-40 bg-background-dark/95 backdrop-blur-md border-b border-white/10">
+            <div class="flex items-center justify-between px-4 py-4">
+                <button id="backBtn" class="flex items-center">
+                    <span class="material-symbols-outlined text-white cursor-pointer">arrow_back_ios</span>
+                </button>
+                <h1 class="font-serif text-primary text-xl font-bold tracking-tight uppercase">El Balcón Futbolero</h1>
+                <button id="menuHamburgerBtn" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/5 transition-colors">
+                    <span class="material-symbols-outlined text-white">menu</span>
+                </button>
+            </div>
+
+            <!-- Tabs / Category Navigation -->
+            <div class="flex overflow-x-auto custom-scrollbar px-4 gap-6 items-center">
+                <a class="tab-link flex flex-col items-center pt-4 pb-3 border-b-2 border-primary" href="#bebidas" data-section="bebidas">
+                    <p class="text-primary text-xs font-bold uppercase tracking-widest whitespace-nowrap">BEBIDAS</p>
+                </a>
+                <a class="tab-link flex flex-col items-center pt-4 pb-3 border-b-2 border-transparent hover:border-white/20" href="#pizzas" data-section="pizzas">
+                    <p class="text-gray-400 text-xs font-bold uppercase tracking-widest whitespace-nowrap">PIZZAS</p>
+                </a>
+                <a class="tab-link flex flex-col items-center pt-4 pb-3 border-b-2 border-transparent hover:border-white/20" href="#entradas" data-section="entradas">
+                    <p class="text-gray-400 text-xs font-bold uppercase tracking-widest whitespace-nowrap">ENTRADAS</p>
+                </a>
+                <a class="tab-link flex flex-col items-center pt-4 pb-3 border-b-2 border-transparent hover:border-white/20" href="#comidas-rapidas" data-section="comidas-rapidas">
+                    <p class="text-gray-400 text-xs font-bold uppercase tracking-widest whitespace-nowrap">COMIDAS RÁPIDAS</p>
+                </a>
+                <a class="tab-link flex flex-col items-center pt-4 pb-3 border-b-2 border-transparent hover:border-white/20" href="#platos-fuertes" data-section="platos-fuertes">
+                    <p class="text-gray-400 text-xs font-bold uppercase tracking-widest whitespace-nowrap">PLATOS FUERTES</p>
+                </a>
+            </div>
+        </nav>
+
+        <main class="pb-24">
+            <!-- BEBIDAS Section -->
+            <div id="bebidas" class="section-header px-4 py-6">
+                <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-2xl shadow-black/50">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                    <div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-700 hover:scale-105" style='background-image: url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800");'>
+                    </div>
+                    <div class="absolute bottom-4 left-4 z-20">
+                        <h3 class="font-serif text-2xl text-white">Bebidas Artesanales</h3>
+                        <p class="text-white/70 text-sm font-light italic">Cócteles premium preparados con maestría.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mojitos Section -->
+            <section id="mojitos" class="mb-8">
+                <div class="flex items-center px-4 mb-4">
+                    <h2 class="font-serif text-2xl text-white border-l-4 border-primary pl-3">Mojitos</h2>
+                    <div class="h-[1px] flex-grow bg-white/10 ml-4"></div>
+                </div>
+                <div class="space-y-1">
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Mojito de Menta y Hierbabuena</p>
+                            <p class="text-gray-400 text-xs font-light italic">Ron blanco, menta fresca, hierbabuena, lima y soda.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$28.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Margaritas Section -->
+            <section id="margaritas" class="mb-8">
+                <div class="flex items-center px-4 mb-4">
+                    <h2 class="font-serif text-2xl text-white border-l-4 border-primary pl-3">Margaritas</h2>
+                    <div class="h-[1px] flex-grow bg-white/10 ml-4"></div>
+                </div>
+                <div class="space-y-1">
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Margarita Clásica</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tequila reposado, triple sec, lima fresca y sal.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$30.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Margarita de Mandarina</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tequila, mandarina natural, triple sec y sal.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$32.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Margarita de Maracuyá</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tequila, pulpa de maracuyá, triple sec y sal.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$32.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Margarita de Guanábana</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tequila, pulpa de guanábana fresca, triple sec.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$32.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Margarita de Cereza</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tequila, cerezas naturales, triple sec y sal.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$33.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Margarita de Mango</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tequila, mango fresco, triple sec y sal.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$32.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Margarita de Tamarindo</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tequila, pulpa de tamarindo, triple sec y sal.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$32.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gin Tonic Section -->
+            <section id="gin" class="mb-8">
+                <div class="flex items-center px-4 mb-4">
+                    <h2 class="font-serif text-2xl text-white border-l-4 border-primary pl-3">Gin Tonic</h2>
+                    <div class="h-[1px] flex-grow bg-white/10 ml-4"></div>
+                </div>
+                <div class="space-y-1">
+                    <div class="menu-item flex items-center gap-4 bg-surface-dark/40 px-4 py-5 border-y border-white/5 mx-4 rounded-xl">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">eco</span>
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Gin Tonic de Pepino</p>
+                            <p class="text-gray-400 text-xs font-light italic">Gin premium, rodajas de pepino fresco y tónica.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$38.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Gin Tonic de Pepino y Pimienta</p>
+                            <p class="text-gray-400 text-xs font-light italic">Gin, pepino, toque de pimienta rosa y tónica premium.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$40.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Piña Colada con Ron</p>
+                            <p class="text-gray-400 text-xs font-light italic">Ron añejo, piña natural, crema de coco y hielo.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$35.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PIZZAS Section -->
+            <div id="pizzas" class="section-header px-4 py-6">
+                <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-2xl shadow-black/50">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                    <div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-700 hover:scale-105" style='background-image: url("https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800");'>
+                    </div>
+                    <div class="absolute bottom-4 left-4 z-20">
+                        <h3 class="font-serif text-2xl text-white">Pizzas Artesanales</h3>
+                        <p class="text-white/70 text-sm font-light italic">Masa artesanal, ingredientes frescos y recetas únicas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <section class="mb-8">
+                <div class="flex items-center px-4 mb-4">
+                    <h2 class="font-serif text-2xl text-white border-l-4 border-primary pl-3">Pizzas Artesanales</h2>
+                    <div class="h-[1px] flex-grow bg-white/10 ml-4"></div>
+                </div>
+                <div class="space-y-1">
+                    <div class="menu-item flex items-center gap-4 bg-surface-dark/40 px-4 py-5 border-y border-white/5 mx-4 rounded-xl">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">local_pizza</span>
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <span class="inline-block px-3 py-1 bg-primary text-black text-[10px] font-black tracking-widest uppercase rounded-full mb-2">Favoritos</span>
+                            <p class="text-white text-lg font-medium">Pizza Román Riquelme</p>
+                            <p class="text-gray-400 text-xs font-light italic">Salsa de tomate, mozzarella, jamón serrano, rúcula y parmesano.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$42.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Pizza Maldini</p>
+                            <p class="text-gray-400 text-xs font-light italic">Salsa de tomate, mozzarella, pepperoni, champiñones y aceitunas.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$40.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Pizza Frank Ribery</p>
+                            <p class="text-gray-400 text-xs font-light italic">Salsa de tomate, mozzarella, pollo BBQ, cebolla morada y cilantro.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$45.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Pizza Edgar Davids</p>
+                            <p class="text-gray-400 text-xs font-light italic">Salsa de tomate, mozzarella, chorizo, pimentón y jalapeños.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$43.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Pizza Toni Kroos</p>
+                            <p class="text-gray-400 text-xs font-light italic">Salsa blanca, mozzarella, tocino, cebolla caramelizada y orégano.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$44.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Pizza James Rodríguez</p>
+                            <p class="text-gray-400 text-xs font-light italic">Salsa de tomate, mozzarella, jamón, piña y cherry.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$41.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Pizza Salvatore Margarita</p>
+                            <p class="text-gray-400 text-xs font-light italic">La clásica: salsa de tomate, mozzarella fresca, albahaca y aceite de oliva.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$38.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ENTRADAS Section -->
+            <div id="entradas" class="section-header px-4 py-6">
+                <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-2xl shadow-black/50">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                    <div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-700 hover:scale-105" style='background-image: url("https://images.unsplash.com/photo-1724024702777-54cffe52d2aa?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGVudHJhZGFzJTIwcGxhdG9zJTIwcmVzdGF1cmFudGVzfGVufDB8fDB8fHww");'>
+                    </div>
+                    <div class="absolute bottom-4 left-4 z-20">
+                        <span class="inline-block px-3 py-1 bg-primary text-black text-[10px] font-black tracking-widest uppercase rounded-full mb-2">Para Compartir</span>
+                        <h3 class="font-serif text-2xl text-white">Entradas</h3>
+                        <p class="text-white/70 text-sm font-light italic">Comienza tu experiencia con nuestras entradas gourmet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Montaditos -->
+            <section class="mb-8">
+                <div class="flex items-center px-4 mb-4">
+                    <h2 class="font-serif text-2xl text-white border-l-4 border-primary pl-3">Montaditos</h2>
+                    <div class="h-[1px] flex-grow bg-white/10 ml-4"></div>
+                </div>
+                <div class="space-y-1">
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Tostadas Caprese Pirlo</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tomate, mozzarella fresca, albahaca y reducción de balsámico.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$18.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Tostadas Thierry Henry</p>
+                            <p class="text-gray-400 text-xs font-light italic">Salmón ahumado, queso crema, alcaparras y eneldo.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$22.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Tostadas Pep Guardiola</p>
+                            <p class="text-gray-400 text-xs font-light italic">Jamón serrano, tomate rallado, aceite de oliva virgen.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$20.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Otras Entradas -->
+            <section class="mb-8">
+                <div class="flex items-center px-4 mb-4">
+                    <h2 class="font-serif text-2xl text-white border-l-4 border-primary pl-3">Otras Entradas</h2>
+                    <div class="h-[1px] flex-grow bg-white/10 ml-4"></div>
+                </div>
+                <div class="space-y-1">
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Papitas Claudio Pizarro</p>
+                            <p class="text-gray-400 text-xs font-light italic">Papas fritas crujientes con salsa especial de la casa.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$15.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Platanitos Aguinaga</p>
+                            <p class="text-gray-400 text-xs font-light italic">Plátano maduro frito con queso y bocadillo.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$16.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Patacones El Palomo Usuriaga</p>
+                            <p class="text-gray-400 text-xs font-light italic">Patacones crujientes con hogao y queso rallado.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$17.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COMIDAS RÁPIDAS Section -->
+            <div id="comidas-rapidas" class="section-header px-4 py-6">
+                <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-2xl shadow-black/50">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                    <div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-700 hover:scale-105" style='background-image: url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800");'>
+                    </div>
+                    <div class="absolute bottom-4 left-4 z-20">
+                        <h3 class="font-serif text-2xl text-white">Comidas Rápidas</h3>
+                        <p class="text-white/70 text-sm font-light italic">Clásicos reinventados con toque gourmet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <section class="mb-8">
+                <div class="flex items-center px-4 mb-4">
+                    <h2 class="font-serif text-2xl text-white border-l-4 border-primary pl-3">Hamburguesas</h2>
+                    <div class="h-[1px] flex-grow bg-white/10 ml-4"></div>
+                </div>
+                <div class="space-y-1">
+                    <div class="menu-item flex items-center gap-4 bg-surface-dark/40 px-4 py-5 border-y border-white/5 mx-4 rounded-xl">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">lunch_dining</span>
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <span class="inline-block px-3 py-1 bg-primary text-black text-[10px] font-black tracking-widest uppercase rounded-full mb-2">Favoritos</span>
+                            <p class="text-white text-lg font-medium">Hamburguesa Ronaldo Nazario</p>
+                            <p class="text-gray-400 text-xs font-light italic">200g de carne angus, queso cheddar, tocino, cebolla caramelizada.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$38.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Hamburguesa Rey Pelé</p>
+                            <p class="text-gray-400 text-xs font-light italic">200g de carne, queso, lechuga, tomate, salsa especial.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$35.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Hamburguesa Wayne Rooney</p>
+                            <p class="text-gray-400 text-xs font-light italic">200g de carne, queso azul, champiñones salteados, rúcula.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$40.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Hamburguesa Dayro Moreno</p>
+                            <p class="text-gray-400 text-xs font-light italic">200g de carne, chorizo, queso, hogao, huevo frito.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$42.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Hamburguesa Caprese Del Piero</p>
+                            <p class="text-gray-400 text-xs font-light italic">200g de carne, mozzarella, tomate, albahaca, pesto.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$39.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-8">
+                <div class="flex items-center px-4 mb-4">
+                    <h2 class="font-serif text-2xl text-white border-l-4 border-primary pl-3">Sándwiches & Más</h2>
+                    <div class="h-[1px] flex-grow bg-white/10 ml-4"></div>
+                </div>
+                <div class="space-y-1">
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Sándwich Platini Pulled Pork</p>
+                            <p class="text-gray-400 text-xs font-light italic">Cerdo desmechado BBQ, coleslaw, encurtidos en pan brioche.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$36.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Sándwich René Higuita</p>
+                            <p class="text-gray-400 text-xs font-light italic">Pollo apanado, queso, lechuga, tomate, salsa de ajo.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$32.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Papas Maradona</p>
+                            <p class="text-gray-400 text-xs font-light italic">Papas fritas con cheddar, tocino, cebolla verde y crema.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$24.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Burrito Ortega</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tortilla de harina, carne, frijoles, arroz, queso, pico de gallo.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$34.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Burrito Davor Suker</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tortilla de harina, pollo, frijoles, arroz, queso, guacamole.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$33.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Tacos Rafa Márquez</p>
+                            <p class="text-gray-400 text-xs font-light italic">Tres tacos de carne o pollo, cebolla, cilantro y salsas.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$28.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PLATOS FUERTES Section -->
+            <div id="platos-fuertes" class="section-header px-4 py-6">
+                <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-2xl shadow-black/50">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                    <div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-700 hover:scale-105" style='background-image: url("https://plus.unsplash.com/premium_photo-1671394138398-fe1ce5e5b03b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBsYXRvcyUyMGZ1ZXJ0ZXMlMjByZXN0YXVyYW50ZXN8ZW58MHx8MHx8fDA%3D");'>
+                    </div>
+                    <div class="absolute bottom-4 left-4 z-20">
+<!--                         <span class="inline-block px-3 py-1 bg-primary text-black text-[10px] font-black tracking-widest uppercase rounded-full mb-2">Chef's Selection</span>
+ -->                        <h3 class="font-serif text-2xl text-white">Platos Fuertes</h3>
+                        <p class="text-white/70 text-sm font-light italic">Alta cocina con ingredientes premium y técnicas gourmet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <section class="mb-8">
+                <div class="flex items-center px-4 mb-4">
+                    <h2 class="font-serif text-2xl text-white border-l-4 border-primary pl-3">Platos Fuertes</h2>
+                    <div class="h-[1px] flex-grow bg-white/10 ml-4"></div>
+                </div>
+                <div class="space-y-1">
+                    <div class="menu-item flex items-center gap-4 bg-surface-dark/40 px-4 py-5 border-y border-white/5 mx-4 rounded-xl">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">restaurant_menu</span>
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Solomo Verón</p>
+                            <p class="text-gray-400 text-xs font-light italic">Solomito de res al punto, papas al romero, vegetales salteados.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$55.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Pollo Beckham</p>
+                            <p class="text-gray-400 text-xs font-light italic">Pechuga a la plancha con salsa de champiñones, arroz y ensalada.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$42.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Pollo Gratinado Lucho Díaz</p>
+                            <p class="text-gray-400 text-xs font-light italic">Pechuga gratinada con queso, jamón, papas a la francesa.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$45.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Salmón Zamorano</p>
+                            <p class="text-gray-400 text-xs font-light italic">Filete de salmón grillado, puré de papa, espárragos y salsa de limón.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$52.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Chuleta Balderrama</p>
+                            <p class="text-gray-400 text-xs font-light italic">Chuleta de cerdo al grill, maduro asado, ensalada fresca.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$48.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Ossobuco Filippo Inzaghi</p>
+                            <p class="text-gray-400 text-xs font-light italic">Ossobuco en salsa de vino tinto, risotto cremoso.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$58.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 bg-surface-dark/40 px-4 py-5 border-y border-white/5 mx-4 rounded-xl">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">group</span>
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Ossobuco Mauro Camoranesi</p>
+                            <p class="text-gray-400 text-xs font-light italic">Porción para compartir, ossobuco premium, risotto trufado.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$95.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Costillas BBQ</p>
+                            <p class="text-gray-400 text-xs font-light italic">Costillas de cerdo glaseadas, papas rústicas, coleslaw.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$50.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Ensalada Gianluigi Buffon</p>
+                            <p class="text-gray-400 text-xs font-light italic">Mix de lechugas, tomates cherry, queso parmesano, vinagreta balsámica.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$28.000</p>
+                        </div>
+                    </div>
+                    <div class="menu-item flex items-center gap-4 px-4 py-4 border-b border-white/5">
+                        <div class="flex flex-col flex-1">
+                            <p class="text-white text-lg font-medium">Pollitos Cantona (para niños)</p>
+                            <p class="text-gray-400 text-xs font-light italic">Deditos de pollo apanados, papas fritas, jugo natural.</p>
+                        </div>
+                        <div class="shrink-0">
+                            <p class="text-primary text-lg font-bold">$25.000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Menu Sidebar -->
+    <div class="menu-overlay fixed inset-0 bg-black/70 z-50 backdrop-blur-sm" id="menuOverlay"></div>
+    <div class="menu-sidebar fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-surface-dark border-l border-white/10 z-50 overflow-y-auto" id="menuSidebar">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="font-serif text-2xl text-primary">Menú</h2>
+                <button id="closeSidebar" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/5 transition-colors">
+                    <span class="material-symbols-outlined text-white">close</span>
+                </button>
+            </div>
+
+            <nav class="space-y-2">
+                <a href="#bebidas" class="sidebar-link flex items-center gap-4 p-4 rounded-lg hover:bg-primary/10 transition-all group">
+                    <span class="material-symbols-outlined text-primary text-2xl">local_bar</span>
+                    <span class="text-white font-medium group-hover:text-primary transition-colors">Bebidas</span>
+                </a>
+                <a href="#pizzas" class="sidebar-link flex items-center gap-4 p-4 rounded-lg hover:bg-primary/10 transition-all group">
+                    <span class="material-symbols-outlined text-white text-2xl group-hover:text-primary transition-colors">local_pizza</span>
+                    <span class="text-white font-medium group-hover:text-primary transition-colors">Pizzas</span>
+                </a>
+                <a href="#entradas" class="sidebar-link flex items-center gap-4 p-4 rounded-lg hover:bg-primary/10 transition-all group">
+                    <span class="material-symbols-outlined text-white text-2xl group-hover:text-primary transition-colors">tapas</span>
+                    <span class="text-white font-medium group-hover:text-primary transition-colors">Entradas</span>
+                </a>
+                <a href="#comidas-rapidas" class="sidebar-link flex items-center gap-4 p-4 rounded-lg hover:bg-primary/10 transition-all group">
+                    <span class="material-symbols-outlined text-white text-2xl group-hover:text-primary transition-colors">lunch_dining</span>
+                    <span class="text-white font-medium group-hover:text-primary transition-colors">Comidas Rápidas</span>
+                </a>
+                <a href="#platos-fuertes" class="sidebar-link flex items-center gap-4 p-4 rounded-lg hover:bg-primary/10 transition-all group">
+                    <span class="material-symbols-outlined text-white text-2xl group-hover:text-primary transition-colors">restaurant</span>
+                    <span class="text-white font-medium group-hover:text-primary transition-colors">Platos Fuertes</span>
+                </a>
+            </nav>
+
+            <div class="mt-12 pt-6 border-t border-white/10">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="material-symbols-outlined text-primary">sports_soccer</span>
+                    <span class="text-sm text-gray-400">Gastrobar Futbolero</span>
+                </div>
+                <p class="text-white/70 text-sm">Disfruta de la mejor comida mientras ves tus partidos favoritos.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        const landing = document.getElementById('landing');
+        const menuPage = document.getElementById('menuPage');
+        const verMenuBtn = document.getElementById('verMenuBtn');
+        const backBtn = document.getElementById('backBtn');
+        const menuHamburgerBtn = document.getElementById('menuHamburgerBtn');
+        const menuSidebar = document.getElementById('menuSidebar');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        // Ir al menú
+        verMenuBtn.addEventListener('click', () => {
+            landing.style.display = 'none';
+            menuPage.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        });
+
+        // Volver al landing
+        backBtn.addEventListener('click', () => {
+            menuPage.classList.add('hidden');
+            landing.style.display = 'flex';
+            window.scrollTo(0, 0);
+        });
+
+        // Abrir sidebar
+        menuHamburgerBtn.addEventListener('click', () => {
+            menuSidebar.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Cerrar sidebar
+        function closeSidebarMenu() {
+            menuSidebar.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        closeSidebar.addEventListener('click', closeSidebarMenu);
+        menuOverlay.addEventListener('click', closeSidebarMenu);
+
+        // Cerrar sidebar al hacer clic en un enlace
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(closeSidebarMenu, 300);
+            });
+        });
+
+        // Función para actualizar tab activo
+        function updateActiveTab(sectionId) {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            tabLinks.forEach(link => {
+                const isActive = link.getAttribute('href') === `#${sectionId}`;
+                
+                if (isActive) {
+                    link.classList.add('border-primary');
+                    link.classList.remove('border-transparent');
+                    link.querySelector('p').classList.add('text-primary');
+                    link.querySelector('p').classList.remove('text-gray-400');
+                    
+                    // Scroll horizontal de tabs para centrar el tab activo
+                    link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                } else {
+                    link.classList.remove('border-primary');
+                    link.classList.add('border-transparent');
+                    link.querySelector('p').classList.remove('text-primary');
+                    link.querySelector('p').classList.add('text-gray-400');
+                }
+            });
+        }
+
+        // Tabs navigation con scroll suave
+        document.querySelectorAll('.tab-link, .sidebar-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                
+                if (target) {
+                    // Calcular el offset para el sticky nav (altura del nav aprox 120px)
+                    const navHeight = 120;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active tab
+                    updateActiveTab(targetId);
+                }
+            });
+        });
+
+        // Intersection Observer para las secciones
+        const sections = document.querySelectorAll('.section-header');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '-120px 0px -70% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateActiveTab(entry.target.id);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Parallax effect en el landing
+        document.addEventListener('mousemove', (e) => {
+            if (landing.style.display !== 'none') {
+                const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+                const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+                
+                const floatElements = landing.querySelectorAll('.animate-float, .animate-float-reverse');
+                floatElements.forEach((el, index) => {
+                    const multiplier = index === 0 ? 1 : -1;
+                    el.style.transform = `translate(${moveX * multiplier}px, ${moveY * multiplier}px)`;
+                });
+            }
+        });
+
+        // Touch feedback para mobile
+        if ('ontouchstart' in window) {
+            verMenuBtn.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            verMenuBtn.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
+            });
+        }
+    </script>
+</body>
+</html>
