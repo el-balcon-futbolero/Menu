@@ -1,10 +1,10 @@
-# 🍽️ Menú Digital QR – El Balcón Futbolero
+# Menú Digital QR – El Balcón Futbolero
 
 Menú digital elegante y optimizado para dispositivos móviles, diseñado para **El Balcón Futbolero – Gastrobar**, con el objetivo de modernizar la experiencia del cliente mediante un **menú escaneable con código QR**, manteniendo la identidad futbolera y elevando la percepción premium del restaurante.
 
 ---
 
-## ✨ Descripción del proyecto
+## Descripción del proyecto
 
 Este proyecto consiste en el **rediseño completo de la carta física** del restaurante y su transformación en un **menú digital en formato PDF**, accesible mediante código QR.
 
@@ -16,7 +16,7 @@ El enfoque principal fue:
 
 ---
 
-## 🎨 Concepto de diseño
+## Concepto de diseño
 
 **Estilo:**  
 Gastrobar elegante · nocturno · moderno · identidad futbolera sutil
@@ -34,7 +34,7 @@ Gastrobar elegante · nocturno · moderno · identidad futbolera sutil
 
 ---
 
-## 📄 Estructura del menú
+## Estructura del menú
 
 - Portada con logo y branding
 - Entradas
@@ -47,7 +47,7 @@ Cada sección está diseñada en formato vertical, optimizada para lectura desde
 
 ---
 
-## 📸 Imágenes
+## Imágenes
 
 Las imágenes utilizadas son **fotografías gastronómicas de referencia**, generadas con inteligencia artificial, con el objetivo de:
 - Aumentar el atractivo visual
@@ -62,7 +62,7 @@ Características:
 
 ---
 
-## 🧠 Experiencia de usuario (UX)
+## Experiencia de usuario (UX)
 
 - Diseño limpio y ordenado
 - Uso estratégico del color dorado como acento
@@ -72,7 +72,7 @@ Características:
 
 ---
 
-## 🛠️ Herramientas utilizadas
+## Herramientas utilizadas
 
 - **Figma** – Diseño del menú
 - **Stitch AI** – Generación de layout inicial
@@ -81,7 +81,7 @@ Características:
 
 ---
 
-## 🚀 Objetivo final
+## Objetivo final
 
 Ofrecer al restaurante una carta digital que:
 - Mejore la imagen de marca
@@ -91,7 +91,7 @@ Ofrecer al restaurante una carta digital que:
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
 **Kevin Castro Gómez**  
 Desarrollador Frontend / Diseñador UX/UI  
@@ -101,7 +101,7 @@ Este proyecto forma parte de mi portafolio profesional enfocado en **diseño de 
 
 ---
 
-## 📎 Licencia
+## Licencia
 
 Este proyecto fue desarrollado con fines demostrativos y de portafolio.  
 Todos los nombres, precios e identidad pertenecen a **El Balcón Futbolero**.
